@@ -17,10 +17,14 @@
 	}
 
 	function enhanceCategory(raw: string): string {
-		if (!raw) {
+		if (!raw || raw === 'undefined') {
 			return 'uncategorised';
 		}
 		const text = raw.toLowerCase().trim();
+
+		if (text.includes('cat')) {
+			return raw + ' 🐈‍⬛';
+		}
 
 		if (text.includes('haj')) {
 			return raw + ' 🦈';
