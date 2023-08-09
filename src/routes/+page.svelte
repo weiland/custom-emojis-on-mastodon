@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 	import Form from '../components/Form.svelte';
 	import Emojis from '../components/Emojis.svelte';
@@ -14,8 +13,6 @@
 
 	type EmojiList = Record<Category, Emoji[]>;
 
-	export let data: PageData;
-
 	let headline = 'Find custom emojis of a mastodon instance';
 	let emojis: EmojiList;
 	let error: string;
@@ -23,7 +20,8 @@
 	type Category = string;
 
 	onMount(async () => {
-		const hostname = data.hostname;
+		const params = new URLSearchParams(location.search);
+		const hostname = params?.get('hostname');
 		console.log('hostname', hostname);
 
 		if (!hostname) {
@@ -73,14 +71,14 @@
 			}
 			return acc;
 		}, {});
-
-
-		return { emojis, hostname };
 	});
 </script>
 
 <h1>{headline}</h1>
 or&nbsp;<a href="#hostname">choose another server</a>
+<noscript>
+	This is a static site that fetches and renders the emojis dynamically using JavaScript wich is not enabled.
+</noscript>
 {#if emojis}
 	<Emojis emojis={emojis} />
 {:else if error}
