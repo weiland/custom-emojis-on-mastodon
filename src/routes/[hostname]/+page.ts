@@ -10,12 +10,11 @@ export type Emoji = {
 	category: Category
 };
 
-export const load = (async ({ fetch, url }) => {
+export const load = (async ({ fetch, url, params }) => {
 
-	const hostname = url.searchParams.get('hostname');
+	const hostname = params.hostname;
 	if (!hostname) {
 		return {};
-		// return { error: 'Please provide a hostname.' };
 	}
 
 	if (!/\./.test(hostname) || hostname.length <= 3) {
@@ -26,6 +25,9 @@ export const load = (async ({ fetch, url }) => {
 	let res;
 	try {
 		res = await fetch(emojisUrl);
+                if (res.status >= 400) {
+                        throw new Error(`${res.status} (${res.statusText}) Status received.`);
+                }
 	} catch (error) {
 		console.error('Error during fetch:', error);
 		return { error: `Could not fetch Emoji list from hostname "${hostname}".` };
