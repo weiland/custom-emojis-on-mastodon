@@ -38,7 +38,7 @@
 	}
 </script>
 
-<ul role="list">
+<ul role="list" class="emojis">
 	{#each Object.entries(emojis) as [category, emojiList]}
 		<li>
 			<h2 class={isQueer(category) ? 'text-rainbow' : ''}>
@@ -63,6 +63,15 @@
 </ul>
 
 <style>
+	.emojis {
+		position: relative;
+	}
+
+	.emojis h2 {
+		top: 0;
+		position: sticky;
+	}
+
 	.text-rainbow {
 		display: inline-block;
 		background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
@@ -74,8 +83,8 @@
 	}
 	.list {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
+		grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+		gap: 0.75rem;
 		align-items: start;
 		justify-items: center;
 	}
@@ -102,7 +111,7 @@
 	.btn {
 		width: 100%;
 		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
+		padding: 0.4rem 0.75rem;
 		border: 0;
 		border-radius: 8px;
 		color: white;

@@ -28,8 +28,8 @@
 		background-size: 14rem;
 	}
 
-	main {
-		margin: auto;
+	:global(a) {
+		color: rgb(var(--accent-dark));
 	}
 
 	:global(h1) {
@@ -38,5 +38,9 @@
 		-webkit-text-fill-color: transparent;
 		background-size: 120%;
 		background-position: 0%;
+	}
+
+	main {
+		margin: auto;
 	}
 </style>
