@@ -8,7 +8,7 @@ const config = {
 
         kit: {
                 adapter: adapter({
-                        runtime: 'edge'
+                        runtime: 'nodejs18.x', // for ISR
                 })
         }
 };
