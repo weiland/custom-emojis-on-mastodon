@@ -14,8 +14,8 @@ export type EmojiList = Record<Category, Emoji[]>;
 
 export const load = (async ({ fetch, url, params }) => {
 
-	// Using both possibilities to retrieve a hostname.
-	const hostname = params.hostname || url.searchParams.get('hostname');
+	// Using both possibilities to retrieve a hostname with GET param having precedence.
+	const hostname = url.searchParams.get('hostname') || params.hostname;
 	if (!hostname) {
 		return {};
 	}
