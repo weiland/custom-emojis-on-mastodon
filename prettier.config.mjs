@@ -1,4 +1,4 @@
-{
+export default {
 	"useTabs": true,
 	"singleQuote": true,
 	"trailingComma": "none",
