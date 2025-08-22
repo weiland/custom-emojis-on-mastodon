@@ -106,7 +106,9 @@
 	.btn:focus-visible {
 		outline: none;
 		transition: none;
-		box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px red;
+		box-shadow:
+			0 0 0 2px var(--background-color),
+			0 0 0 4px red;
 	}
 	.btn {
 		width: 100%;

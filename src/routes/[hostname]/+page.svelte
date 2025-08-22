@@ -6,7 +6,10 @@
 	export let data: PageData;
 </script>
 
-<h1>Custom Emojis of <i>{'hostname' in data && data.hostname ? data.hostname : 'an invalid'}</i> Mastodon server</h1>
+<h1>
+	Custom Emojis of <i>{'hostname' in data && data.hostname ? data.hostname : 'an invalid'}</i> Mastodon
+	server
+</h1>
 or&nbsp;<a href="#hostname">choose another server</a>
 {#if 'emojis' in data && data.emojis}
 	<Emojis emojis={data.emojis} />
